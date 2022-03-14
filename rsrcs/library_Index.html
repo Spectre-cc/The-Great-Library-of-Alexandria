@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Library Management</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="logo.ico">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <!----------------------Logo and Title-------------------------->
+    <div class="title">  
+        <a href="#"><img src="rsrcs/logo.png" alt="logo"></a>
+        <h1 id="wew">The Great Library of Alexandria</h1>
+        <hr>
+    </div>
+    <!----------------------Logo and Title-------------------------->
+
+    <!------------------------Nav Bar------------------------------->
+    <div class="options">
+        <div class="main">
+            <div class="dropdown">
+                <button>View</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="AB()">Books</a>
+                    <a href="#" onclick="M()">Members</a>
+                  </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="dropdown">
+                <button>Inventory</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="AddB()">Add New Book</a>
+                    <a href="#" onclick="UpdateB()">Update Book</a>
+                    <a href="#" onclick="DeleteB()">Delete Book</a>
+                  </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="dropdown">
+                <button>Members</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="AddM()">Add Member</a>
+                    <a href="#" onclick="UpdateM()">Update Member</a>
+                    <a href="#" onclick="DeleteM()">Delete Member</a>
+                    <a id="borrow" href="#" onclick="Borrow()">Borrow</a>
+                    <a href="#" onclick="Return()">Return</a>
+                    <a href="#" onclick="BH()">Borrow History</a>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!------------------------Nav Bar------------------------------->
+
+    <!------------------------Search Bar------------------------------->
+    <div id="searchcontainer">
+        <form id="searchForm" action="">
+            <input type="text" placeholder="Search.." name="search" id="searchBar">
+            <button type="submit" id="searchSub"></button><br>
+            <label><strong>Filter by:</strong></label>
+            <input type="radio" id="filter1" name="filter" value="bookTitle">
+            <label for="html">Title</label>
+            <input type="radio" id="filter2" name="filter" value="bookAuthor">
+            <label for="css">Author</label>
+            <input type="radio" id="filter3" name="filter" value="year">
+            <label for="javascript">Year</label>
+            <input type="radio" id="filter4" name="filter" value="genre">
+            <label for="javascript">Genre</label>
+        </form>
+    </div>
+    <!------------------------Search Bar------------------------------->
+
+    <div class="functionCon">
+    <!------------------------Tables------------------------------->
+        <div id="tables">
+            <table id="ABtable">
+                <caption id="AB">Books</caption>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>1963</td>
+                    <td>Fiction</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>1963</td>
+                    <td>Fiction</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>1963</td>
+                    <td>Fiction</td>
+                </tr>
+            </table>
+
+            <table id="Mtable">
+                <caption>Members</caption>
+                <tr>
+                    <th>Member ID</th>
+                    <th>First name</th>
+                    <th>Last Name</th>
+                    <th>Contact Number</th>
+                    <th>Address</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>00000000000</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>00000000000</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>Lorem, ipsum dolor.</td>
+                    <td>00000000000</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                </tr>
+            </table>
+
+            <table id="BHtable">
+                <caption>Borrow History</caption>
+                <tr>
+                    <th>Borrower ID</th>
+                    <th>Book Borrowed</th>
+                    <th>Borrower</th>
+                    <th>Date Borrowed</th>
+                    <th>Date Returned</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>lorem</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>lorem</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                    <td>lorem</td>
+                    <td>0000</td>
+                    <td>0000</td>
+                </tr>
+            </table>
+        </div>
+    <!------------------------Tables------------------------------->
+
+    <!------------------------Forms------------------------------->
+        <form id="AddBForm" action="">
+                <h2>Add New Book</h2><br>
+                <label for="Btitle"><strong>Title</strong></label>
+                <input type="text" id="Btitle" name="Book Title" placeholder="Insert Book Title Here...">
+                <label for="Bauthor"><strong>Book Author</strong></label>
+                <input type="text" id="Bauthor" name="Book Author" placeholder="Insert Book Author Here...">
+                <label for="Byear"><strong>Year Published</strong></label>
+                <input type="text" id="Byear" name="Year Published" placeholder="Insert Year Published Here...">
+                <label for="Bgenre"><strong>Genre</strong></label>
+                <input type="text" id="Bgenre" name="Genre" placeholder="Insert Book Genre Here...">
+                <input type="submit" value="Submit">
+        </form>
+        <form id="UBForm" action="">
+            <h2>Update Book</h2><br>
+            <label for="UBID"><strong>Book ID</strong></label>
+            <input type="number" id="UBID" name="Borrow ID" placeholder="Insert Book ID Here...">
+            <label for="Btitle"><strong>Title</strong></label>
+            <input type="text" id="Btitle" name="Book Title" placeholder="Insert Book Title Here...">
+            <label for="Bauthor"><strong>Book Author</strong></label>
+            <input type="text" id="Bauthor" name="Book Author" placeholder="Insert Book Author Here...">
+            <label for="Byear"><strong>Year Published</strong></label>
+            <input type="text" id="Byear" name="Year Published" placeholder="Insert Year Published Here...">
+            <label for="Bgenre"><strong>Genre</strong></label>
+            <input type="text" id="Bgenre" name="Genre" placeholder="Insert Book Genre Here...">
+            <input type="submit" value="Submit">
+        </form>
+        <form id="DBForm" action="">
+            <h2>Delete Book</h2>
+            <input type="number" id="deleteID" name="Borrow ID" placeholder="Book ID">
+            <input type="submit" value="Submit">
+        </form>
+        <form id="AddMForm" action="">
+                <h2>Add New Member</h2><br>
+                <label for="FullName"><strong>Full Name</strong></label>
+                <input type="text" id="FullName" name="Full Name" placeholder="Insert Full Name Here...">
+                <label for="CNumber"><strong>Contact Number</strong></label>
+                <input type="text" id="CNumber" name="Contact Number" placeholder="Insert Contact Number Here...">
+                <label for="Address"><strong>Address</strong></label>
+                <input type="text" id="Address" name="Address" placeholder="Insert Address Here...">
+                <input type="submit" value="Submit">
+        </form>
+        <form id="UMForm" action="">
+            <h2>Update Member</h2><br>
+            <label for="UMID"><strong>Member ID</strong></label>
+            <input type="number" id="UMID" name="Borrow ID" placeholder="Insert Member ID Here...">
+            <label for="FullName"><strong>Full Name</strong></label>
+            <input type="text" id="FullName" name="Full Name" placeholder="Insert Full Name Here...">
+            <label for="CNumber"><strong>Contact Number</strong></label>
+            <input type="text" id="CNumber" name="Contact Number" placeholder="Insert Contact Number Here...">
+            <label for="Address"><strong>Address</strong></label>
+            <input type="text" id="Address" name="Address" placeholder="Insert Address Here...">
+            <input type="submit" value="Submit">
+        </form>
+        <form id="DMForm" action="">
+            <h2>Delete Member</h2>
+            <input type="number" id="deleteID" name="Borrow ID" placeholder="Member ID">
+            <input type="submit" value="Submit">
+        </form>
+        <form id="BForm" action="">
+            <h2>Borrow Book</h2><br>
+            <label for="Booktitle"><strong>Book Title</strong></label>
+            <input type="text" id="Booktitle" name="Book Title" placeholder="Insert Book Title Here...">
+            <label for="MName"><strong>Contact Number</strong></label>
+            <input type="text" id="MName" name="Member Name" placeholder="Insert Member Name Here...">
+            <label for="BDate"><strong>Borrow Date</strong></label>
+            <input type="date" id="BDate" name="Borrow Date">
+            <input type="submit" value="Submit">
+        </form>
+        <form id="RForm" action="">
+            <h2>Return Book</h2><br>
+            <label for="BID"><strong>Borrow ID</strong></label>
+            <input type="text" id="BID" name="Borrow ID" placeholder="Insert Borrow ID Here...">
+            <label for="RDate"><strong>Return Date</strong></label>
+            <input type="date" id="RDate" name="Return Date">
+            <input type="submit" value="Submit">
+        </form>
+    <!------------------------Forms------------------------------->
+    </div>
+</div>
+</body>
+
+</html>
